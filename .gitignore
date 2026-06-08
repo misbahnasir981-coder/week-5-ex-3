@@ -1,69 +1,52 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+class Travel
+{
+private:
+    int kilometer;
+    int hour;
 
-# Precompiled Headers
-*.gch
-*.pch
+public:
+    Travel()
+    {
+        kilometer = 0;
+        hour = 0;
+    }
 
-# Linker files
-*.ilk
+    void input()
+    {
+        cout << "Enter distance in kilometers: ";
+        cin >> kilometer;
 
-# Debugger Files
-*.pdb
+        cout << "Enter time in hours: ";
+        cin >> hour;
+    }
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
+    void showTable(Travel p)
+    {
+        cout << "\nObject\t\tKilometer\tHour\n";
+        cout << "----------------------------------------\n";
 
+        cout << "t1\t\t" << kilometer << "\t\t" << hour << endl;
+        cout << "t2\t\t" << p.kilometer << "\t\t" << p.hour << endl;
+        cout << "Added Result\t" << kilometer + p.kilometer
+            << "\t\t" << hour + p.hour << endl;
+    }
+};
 
-# Fortran module files
-*.mod
-*.smod
+int main()
+{
+    Travel t1, t2;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    cout << "Enter details for first travel object:\n";
+    t1.input();
 
-# Executables
-*.exe
-*.out
-*.app
+    cout << "\nEnter details for second travel object:\n";
+    t2.input();
 
-# Build directories
-build/
-Build/
-build-*/
+    t1.showTable(t2);
 
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
+    return 0;
+}
